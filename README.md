@@ -1,6 +1,5 @@
 # FEATURE of CRUD-oepration-php
-This is a simple practice for CRUD operation using PHP.
-I have used bootstrap for designing the website.
+This is a simple practice for CRUD operation.
 
 
 # System Used
