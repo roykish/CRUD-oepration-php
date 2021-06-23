@@ -7,15 +7,15 @@
 
 ?>
 
-<div class="container">
-    <div class="d-flex align-items-center" style = "height:100vh">
+<div class="container-fluid">
+    <div class="form-wrapper">
 
-        <div class="row w-100">
-            <div class="col-md-4">
+        <div class="row w-100 align-items-center flex-column">
+            <div class="col-md-3">
                 <!--This is the form for adding data-->
                 <div class="">
-                    <form action="inc/data_entry.php" method="POST" class="p-4 shadow bg-body rounded" >  
-                        <h4 class="display-4 text-center">Login</h4><hr><br>
+                    <form action="inc/data_entry.php" method="POST" class="p-2 shadow bg-body rounded mb-3" >  
+                        <h4 class="display-4 text-center">Login</h4><br>
                         <div class="form-group">
                             <label for="fullname">Fullname</label>
                             <input type="text" class="form-control" id="fullname"  placeholder="Enter full name" name="fullname">
@@ -30,41 +30,45 @@
                 </div>
                 <!--Form ends here-->
             </div>
-            <div class="col-md-8 pl-5">
-                <table class="table">    <!--This table displays all the data fetched from database-->
-                    <thead>
-                        <tr>
-                            <th>Fullname</th>
-                            <th>Username</th>
-                            <th colspan="2" class="text-center">Action</th>
-                        </tr>
-                    </thead>
+            <div class="col-md-8 ">
+                <div class="table-wrapper">
+                    <table class="table">    <!--This table displays all the data fetched from database-->
+                        <thead>
+                            <tr>
+                                <th>Fullname</th>
+                                <th>Username</th>
+                                <th colspan="2" class="text-center">Action</th>
+                            </tr>
+                        </thead>
 
-                    <!-- -----------------------------Starts a while loop here to fetch all the data from the database and show them on the table.  ------------------------ -->
+                        <!-- -----------------------------Starts a while loop here to fetch all the data from the database and show them on the table.  ------------------------ -->
+                        <div class="table-inner">
+                            <?php while($row = $result->fetch_assoc()): ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $row['fullname'];?>
+                                    </td>
 
-                    <?php while($row = $result->fetch_assoc()): ?>
-                        <tr>
-                            <td>
-                                <?php echo $row['fullname'];?>
-                            </td>
+                                    <td>
+                                        <?php echo $row['username'];?>
+                                    </td>
+                                    <td class="text-center">
+                                    <a href="edit_data.php?edit=<?php echo $row['id'];?>"
+                                        class = "btn btn-warning">Edit</a>
+                                    <a href="inc/delete_record.php?delete=<?php echo $row['id'];?>"
+                                        class = "btn btn-info">Delete</a>
 
-                            <td>
-                                <?php echo $row['username'];?>
-                            </td>
-                            <td class="text-center">
-                            <a href="index.php?edit=<?php echo $row['id'];?>"
-                                class = "btn btn-warning">Edit</a>
-                            <a href="inc/delete_record.php?delete=<?php echo $row['id'];?>"
-                                class = "btn btn-info">Delete</a>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </div>
                             
 
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
+                        <!-- ------------------------------------------------------while loop ends here ------------------------------------------------>
 
-                    <!-- ------------------------------------------------------while loop ends here ------------------------------------------------>
-
-                </table>        <!--Table for displaying data, ends here -->
+                    </table>        <!--Table for displaying data, ends here -->
+                </div>
+                
             </div>
         </div>
         

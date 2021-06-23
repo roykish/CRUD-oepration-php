@@ -1,0 +1,25 @@
+.form-wrapper {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+}
+.table-wrapper {
+	height: 40vh;
+	overflow-y: scroll;
+	position: relative;
+}
+.table-wrapper thead {
+	position: sticky;
+	top: -1px;
+	background-color: rgb(131 243 170);
+	border: 0px;
+}
+thead tr {
+	border: 0;
+}
+.table th {
+	border-top: initial;
+}
+.table thead th {
+	border-bottom: initial;
+}
